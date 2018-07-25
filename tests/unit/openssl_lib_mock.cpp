@@ -54,6 +54,12 @@ void OpenSSLLibMockManager::destroy()
     _mock.reset();
 }
 
+void OpenSSLLibMockManager::destroy()
+{
+    std::lock_guard<std::mutex> _lock(_mutex);
+    _mock.reset();
+}
+
 namespace lib
 {
 /**
